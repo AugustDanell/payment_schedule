@@ -1,9 +1,11 @@
+# A function that returns a dictionary used as an inner dictionary mapping every minute to a pay.
 def whole_hour_mapping(pay):
     d = {}
     for i in range(60):
         d[i] = pay
     return d
 
+# Takes in the start and end hour and fills them with a pay. 
 def fill_hours(s,e,d, p):
     for i in range(s, e+1):
         d[i] = whole_hour_mapping(p)
@@ -13,6 +15,7 @@ def fill_hours(s,e,d, p):
 def format_pay(f):
     return f
 
+# Used to return the pay of the user given that they have inputted their schedule
 def give_pay(sh, sm, eh, em, day, d):
     s = 0
     for i in range(sh, eh):
@@ -39,12 +42,18 @@ if __name__ == '__main__':
     total_h = 0
     total_m = 0
     fill_hours(0, 23, time_mapping[1], 100)
+    fill_hours(0, 23, time_mapping[2], 100)
+    fill_hours(0, 23, time_mapping[3], 100)
+    fill_hours(0, 23, time_mapping[4], 100)
+    fill_hours(0, 23, time_mapping[5], 100)
+    fill_hours(0, 23, time_mapping[6], 100)
+    fill_hours(0, 23, time_mapping[7], 100)
 
     day = ""
     while(not day == "abort"):
-        day = input("Enter in a day in the format:\nMonday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday")
+        day = input("Enter in a day in the format:\nMonday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday (Type \"Abort\" or \"Done\" when done)")
         day = day.lower()
-        if (day == "abort"):
+        if (day == "abort" or day == "done"):
             break
 
         day_mapping = {"monday" : 1, "tuesday" : 2, "wednesday" : 3, "thursday" : 4, "friday" : 5, "saturday" : 6, "sunday" : 7}
